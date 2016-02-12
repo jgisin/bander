@@ -1,0 +1,7 @@
+h1 Dashboard
+
+- if current_user.bands.count == 0
+  = link_to "Create Your Band", new_band_path
+- else
+  - current_user.bands.each do |band|
+    h2= band.name
