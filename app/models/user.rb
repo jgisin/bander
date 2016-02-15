@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  validates :email, :first_name, :last_name, presence: true
+
   before_create :generate_token
   after_validation :set_active_band
 
