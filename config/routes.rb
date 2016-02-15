@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   root "homes#index"
 
   resources :bands do
-    resources :band_invites
+    resources :band_invites do
+      collection do
+        get 'activate'
+      end
+    end
     resources :songs do
       member do
         get 'lyrics'

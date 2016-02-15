@@ -5,9 +5,18 @@
     br
     .well
       = form_for @user do |f|
+        - if params[:invite_token]
+          = hidden_field_tag :invite_token, params[:invite_token]
         .form-group
           = f.label :email
           = f.text_field :email, class: 'form-control', placeholder: 'Email Address', autofocus: true
+        .row
+          .form-group.col-sm-6
+            = f.label :first_name
+            = f.text_field :first_name, class: 'form-control', placeholder: 'First Name'
+          .form-group.col-sm-6
+            = f.label :last_name
+            = f.text_field :last_name, class: 'form-control', placeholder: 'Last Name'
         .form-group
           = f.label :password
           = f.password_field :password, class: 'form-control', placeholder: 'Password'

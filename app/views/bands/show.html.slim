@@ -41,7 +41,7 @@ br
       - @band.users.each do |user|
         .song.song-link
           span.underline
-            = link_to user.email, user, class: 'song-a'
+            = link_to user.full_name, user, class: 'song-a'
       .song.add-song
         = link_to '#', class: 'add-song inactive', data: { target: 'member-form-1' } do
           small
@@ -49,7 +49,7 @@ br
         .song-form#member-form-1
           = form_tag band_band_invites_path(@band) do
             = hidden_field_tag 'band_invite[band_id]', @band.id
-            = text_field_tag :email, "", placeholder: 'New Member'
+            = text_field_tag :email, "", placeholder: 'New Member Email'
   /.col-sm-6
   /  .panel.panel-default
   /    .panel-heading
