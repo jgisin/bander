@@ -7,7 +7,7 @@
       = form_tag session_path do
         .form-group
           = label_tag :email
-          = email_field_tag :email, "", placeholder: 'Email Address', class: 'form-control'
+          = email_field_tag :email, "", placeholder: 'Email Address', class: 'form-control', autofocus: true
         .form-group
           = label_tag :password
           = password_field_tag :password, "", placeholder: 'Password', class: 'form-control'

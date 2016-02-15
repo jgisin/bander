@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   validates :password,
     length: { in: 8..32},
     allow_nil: true
+  validates :email,
+    uniqueness: true
 
   def generate_token
     begin

@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160212234104) do
+ActiveRecord::Schema.define(version: 20160215190410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "audio_clips", force: :cascade do |t|
+    t.integer  "song_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "audio_file"
+  end
+
+  add_index "audio_clips", ["song_id"], name: "index_audio_clips_on_song_id", using: :btree
 
   create_table "bands", force: :cascade do |t|
     t.string   "name"
@@ -32,6 +41,17 @@ ActiveRecord::Schema.define(version: 20160212234104) do
   add_index "bands_users", ["band_id"], name: "index_bands_users_on_band_id", using: :btree
   add_index "bands_users", ["user_id"], name: "index_bands_users_on_user_id", using: :btree
 
+  create_table "songs", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "band_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "lyrics"
+    t.integer  "position"
+  end
+
+  add_index "songs", ["band_id"], name: "index_songs_on_band_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
@@ -45,7 +65,9 @@ ActiveRecord::Schema.define(version: 20160212234104) do
   add_index "users", ["band_id"], name: "index_users_on_band_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "audio_clips", "songs"
   add_foreign_key "bands_users", "bands"
   add_foreign_key "bands_users", "users"
+  add_foreign_key "songs", "bands"
   add_foreign_key "users", "bands"
 end

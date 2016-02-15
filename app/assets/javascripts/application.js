@@ -11,8 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require audio.min.js
+//= require velocity.min.js
+//= require velocity.ui.min.js
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .

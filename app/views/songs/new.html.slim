@@ -1,8 +1,8 @@
 .row
   .col-sm-4.col-sm-offset-4
-    h1 New Band
+    h1 New Song
     .well
-      = form_for @band do |f|
+      = form_for [@band, @song] do |f|
         .form-group
           = f.label :name
           = f.text_field :name, class: 'form-control', autofocus: true

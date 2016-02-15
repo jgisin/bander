@@ -1,49 +1,34 @@
 nav.navbar.navbar-default
-  .container-fluid
+  .container
     /! Brand and toggle get grouped for better mobile display
     .navbar-headerstr
-      button.navbar-toggle.collapsed aria-expanded="false" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" 
+      button.navbar-toggle.collapsed aria-expanded="false" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
         span.sr-only Toggle navigation
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand href="#"  Band
+      a.navbar-brand href="#"  Bandolier
     /! Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav
-        li.active
-          a href="#" 
-            | Link
-            span.sr-only (current)
-        li
-          a href="#"  Link
-        li.dropdown
-          a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
-            | Dropdown
-            span.caret
-          ul.dropdown-menu
-            li
-              a href="#"  Action
-            li
-              a href="#"  Another action
-            li
-              a href="#"  Something else here
-            li.divider role="separator" 
-            li
-              a href="#"  Separated link
-            li.divider role="separator" 
-            li
-              a href="#"  One more separated link
-      form.navbar-form.navbar-left role="search" 
-        .form-group
-          input.form-control placeholder="Search" type="text" /
-        button.btn.btn-default type="submit"  Submit
+        li class=('active' if controller.controller_name == 'bands')
+          = link_to "Home", (current_user.active_band if current_user)
       ul.nav.navbar-nav.navbar-right
         li
-          a href="#"  Link
         - if current_user
+          - if current_user.active_band
+            li.dropdown
+              a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+                = current_user.active_band.try(:name)
+                span.caret
+              ul.dropdown-menu
+                - current_user.bands.each do |band|
+                  li
+                    = link_to band.name, set_active_band_path(band_id: band), method: :post
+                li.divider role="separator"
+                li = link_to "Add Band", new_band_path
           li.dropdown
-            a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
+            a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
               = current_user.email
               span.caret
             ul.dropdown-menu
@@ -53,7 +38,7 @@ nav.navbar.navbar-default
                 a href="#"  Another action
               li
                 a href="#"  Something else here
-              li.divider role="separator" 
+              li.divider role="separator"
               li = link_to "Sign Out", sign_out_path, method: :delete
         - else
           li = link_to "Sign In", sign_in_path

@@ -1,7 +1,23 @@
 Rails.application.routes.draw do
-  root "dashboard#index"
+  get 'homes/index'
 
-  resources :bands
+  root "homes#index"
+
+  resources :bands do
+    resources :songs do
+      member do
+        get 'lyrics'
+      end
+      collection do
+        post 'sort'
+      end
+      resources :audio_clips
+    end
+  end
+
+  # resources :songs do
+  #   resources :audio_clips
+  # end
 
   get 'dashboard/index'
 
@@ -11,6 +27,8 @@ Rails.application.routes.draw do
   resource :session
   delete 'sign_out' => 'sessions#destroy'
   get 'sign_in' => 'sessions#new'
+
+  post 'set_active_band' => 'users#set_active_band'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,27 @@
+h1
+  = link_to @band.name, @band, class: 'band-name'
+  |   
+  = link_to @song.name, [@band,@song], class: 'band-name active'
+
+br
+
+.row
+  .col-sm-6
+    .lyrics-container
+      .title LYRICS
+      .lyrics
+        = simple_format(@song.lyrics)
+
+  .col-sm-6
+    .clips-container
+      .title CLIPS
+      - @song.audio_clips.each do |clip|
+        .clip
+          = audio_tag clip.audio_file.url, preload: "auto"
+          = link_to "Clip", clip.audio_file.url
+
+    = link_to "Add Audio", new_band_song_audio_clip_path(@band, @song), class: 'btn btn-primary'
+
+= link_to "Edit Song", edit_band_song_path(@band, @song)
+br
+

@@ -1,3 +1,132 @@
+$band-color: #0AF;
 // Place all the styles related to the bands controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.title {
+  margin-bottom: 5px;
+  text-decoration: underline;
+  // font-weight: bold;
+  color: gray;
+}
+
+
+.band-name {
+  transition: all 0.3s;
+  &:hover {
+    text-decoration: none;
+    color: white;
+    background-color: $band-color;
+  }
+  &.active {
+    background-color: $band-color;
+  }
+  background-color: black;
+  color: white;
+  padding: 5px;
+}
+
+.icon {
+  display: inline-block;
+  transform: translateZ(0);
+  font-weight: bolder;
+}
+
+.input-show {
+
+}
+
+.hide-song {
+  transform: translateX(-22px);
+}
+
+.song-form {
+  display: inline;
+  form {
+    display: none;
+    input {
+      transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+      border: 0;
+      border-bottom: 3px solid $band-color;
+      opacity: 0;
+      width: 0px;
+      outline: none;
+      padding-left: 5px;
+      // background-color: #0AF;
+      color: $band-color;
+    }
+  }
+}
+
+
+.songs-container {
+  transform: translateZ(0);
+  .song {
+    transition: color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    position: relative;
+    margin-top: 5px;
+    border: 0px $band-color solid;
+    .glyphicon {
+      color: #888;
+    }
+    .glyphicon-remove {
+      transition: color 0.3s;
+      &:hover {
+        color: red;
+      }
+      opacity: 0;
+      position: absolute;
+      left: -22px;
+      top: 7px;
+      color: #888;
+      transform: translateX(5px);
+    }
+    a {
+      color: #444;
+      transition: color 0.3s;
+      &:hover {
+        color: $band-color;
+        transition: color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+        text-decoration: none;
+      }
+    }
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .glyphicon-plus {
+    &:hover {
+      color: $band-color;
+      &.cancel {
+        color: red;
+      }
+    }
+  }
+
+  .underline {
+    // border-bottom: 3px solid #444;
+  }
+
+  .new-song {
+    a {
+      animation: fade-in 1s;
+    }
+  }
+}
+
+
+.song-name {
+  background-color: $band-color;
+  color: white;
+  padding: 5px;
+}
+
+@keyframes fade-in {
+  from {
+    color: $band-color;
+  }
+
+  to {
+    color: inherit;
+  }
+}

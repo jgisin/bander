@@ -1,0 +1,4 @@
+= form_for [@band, @song, @audio_clip] do |f|
+  = f.label :audio_file
+  = f.file_field :audio_file
+  = f.submit

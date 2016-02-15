@@ -14,6 +14,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def set_active_band
+    if band = Band.find(params[:band_id])
+      current_user.update(active_band: band)
+      redirect_to band
+    else
+      redirect_to :back
+    end
+  end
+
   private
 
   def user_params

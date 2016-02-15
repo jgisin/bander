@@ -1,0 +1,12 @@
+h1 = @song.name
+
+hr
+
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      | Lyrics
+  .panel-body.lyrics
+    = form_for [@band, @song] do |f|
+      = f.text_area :lyrics
+      = f.submit

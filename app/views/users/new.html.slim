@@ -7,7 +7,7 @@
       = form_for @user do |f|
         .form-group
           = f.label :email
-          = f.text_field :email, class: 'form-control', placeholder: 'Email Address'
+          = f.text_field :email, class: 'form-control', placeholder: 'Email Address', autofocus: true
         .form-group
           = f.label :password
           = f.password_field :password, class: 'form-control', placeholder: 'Password'
