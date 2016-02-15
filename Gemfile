@@ -23,7 +23,6 @@ gem 'rails_12factor'
 
 group :development, :test do
   gem 'byebug'
-  # gem 'jazz_hands'
   gem 'figaro'
 end
 

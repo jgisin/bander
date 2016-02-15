@@ -16,7 +16,7 @@ br
 .row
   .col-sm-6
     .songs-container.songs-color
-      .title SONGS
+      .title Songs
       .song-links data-update-url=(sort_band_songs_url(@band))
         - @band.songs.each do |song|
           .song.song-link id=("song_#{song.id}")
@@ -37,7 +37,7 @@ br
 
   .col-sm-6
     .songs-container
-      span.title MEMBERS
+      span.title Members
       - @band.users.each do |user|
         .song.song-link
           span.underline
@@ -47,8 +47,9 @@ br
           small
             span.glyphicon.glyphicon-plus
         .song-form#member-form-1
-          = form_for [@band,@song] do |f|
-            = f.text_field :name, placeholder: 'New Member'
+          = form_tag band_band_invites_path(@band) do
+            = hidden_field_tag 'band_invite[band_id]', @band.id
+            = text_field_tag :email, "", placeholder: 'New Member'
   /.col-sm-6
   /  .panel.panel-default
   /    .panel-heading

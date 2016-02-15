@@ -8,17 +8,19 @@ br
 .row
   .col-sm-6
     .lyrics-container
-      .title LYRICS
+      .title Lyrics
       .lyrics
         = simple_format(@song.lyrics)
 
   .col-sm-6
     .clips-container
-      .title CLIPS
+      .title Clips
       - @song.audio_clips.each do |clip|
         .clip
+          | Uploaded 
+          = time_ago_in_words(clip.created_at)
+          |  Ago
           = audio_tag clip.audio_file.url, preload: "auto"
-          = link_to "Clip", clip.audio_file.url
 
     = link_to "Add Audio", new_band_song_audio_clip_path(@band, @song), class: 'btn btn-primary'
 

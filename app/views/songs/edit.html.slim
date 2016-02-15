@@ -1,4 +1,9 @@
-h1 = @song.name
+h1
+  = link_to @band.name, @band, class: 'band-name'
+  |   
+  = link_to @song.name, [@band,@song], class: 'band-name'
+  |   
+  = link_to "Lyrics", '#', class: 'band-name active'
 
 hr
 

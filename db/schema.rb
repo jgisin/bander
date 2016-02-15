@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160215190410) do
+ActiveRecord::Schema.define(version: 20160215200138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 20160215190410) do
   end
 
   add_index "audio_clips", ["song_id"], name: "index_audio_clips_on_song_id", using: :btree
+
+  create_table "band_invites", force: :cascade do |t|
+    t.string   "token"
+    t.integer  "band_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "band_invites", ["band_id"], name: "index_band_invites_on_band_id", using: :btree
+  add_index "band_invites", ["token"], name: "index_band_invites_on_token", unique: true, using: :btree
+  add_index "band_invites", ["user_id"], name: "index_band_invites_on_user_id", using: :btree
 
   create_table "bands", force: :cascade do |t|
     t.string   "name"
@@ -66,6 +78,8 @@ ActiveRecord::Schema.define(version: 20160215190410) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "audio_clips", "songs"
+  add_foreign_key "band_invites", "bands"
+  add_foreign_key "band_invites", "users"
   add_foreign_key "bands_users", "bands"
   add_foreign_key "bands_users", "users"
   add_foreign_key "songs", "bands"
