@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'homes/index'
+  get '/settings' => 'settings#index'
 
   root "homes#index"
 

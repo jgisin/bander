@@ -10,10 +10,10 @@ class SessionsController < ApplicationController
       else
         sign_in(@user)
       end
-      flash[:success] = "You've successfully signed in"
+      flash[:success] = "Signed in!"
       redirect_to root_url
     else
-      flash.now[:error] = "We couldn't sign you in"
+      flash.now[:error] = "Incorrect username or password."
       render :new
     end
   end

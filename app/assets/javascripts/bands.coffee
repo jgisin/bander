@@ -8,6 +8,37 @@ $ ->
   #   last_song.find('.underline a').text data.name
   #   song = $(@).closest('.song').replaceWith last_song
   #   last_song.addClass 'new-song'
+  $('.flash .alert').velocity
+    translateY: -45
+    maxWidth: 0
+    color: '#000'
+    backgroundColor: "#0AF"
+    opacity: 0
+  ,
+    duration: 0
+  $('.alert button').click ->
+    $(@).closest('.alert').velocity 'transition.slideUpOut'
+
+  delay = 0
+  $('.flash .alert').each ->
+    delay += 100
+    $(@).velocity
+      color: '#FFF'
+      backgroundColor: '#FFF'
+      opacity: 1
+    ,
+      duration: 0
+      delay: delay + 200
+    $(@).velocity
+      color: '#FFF'
+      backgroundColor: ['#000', 'easeOutSine', '#FFF']
+      maxWidth: 800
+      opacity: [1, 1]
+      translateY: 0
+    ,
+      easing: 'spring'
+      duration: 700
+
   $('.song-links').sortable
     axis: 'y'
     items: '> .song'

@@ -51,6 +51,7 @@ nav.navi
       .site-logo = link_to "BANDOLIER", root_url
     .navi-right
       - if current_user
+        .site-link = link_to "Settings", settings_path
         .site-link = link_to "Sign Out", sign_out_path, method: :delete
       - else
         .site-link = link_to "Register", new_user_path
