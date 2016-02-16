@@ -31,7 +31,7 @@ toggleEditable = ->
 
 
 saveSongName = (name) ->
-  $.post($('.song-name').data('update-url'), { song: { name: name }, _method: 'PATCH' })
+  $.post($('.song-name-link').data('update-url'), { song: { name: name }, _method: 'PATCH' })
 
 saveLyrics = (lyrics) ->
   $.post($('.lyrics').data('update-url'), { song: { lyrics: lyrics }, _method: 'PATCH' })
@@ -85,7 +85,6 @@ $ ->
       worded_lyrics = $('.lyrics').html()
       saveLyrics(worded_lyrics)
       if $('.lyrics').text().length == 0
-        $('.lyrics').html '<p></p>'
         $('.lyrics').addClass 'placeholder'
 
   # $(".lyrics-container").dblclick ->
