@@ -1,7 +1,9 @@
 h1
   = link_to @band.name, @band, class: 'band-name'
   |   
-  = link_to @song.name, [@band,@song], class: 'band-name active'
+  .link-section.song-name-link data-update-url=(song_path(@song))
+    = link_to @song.name, "#", class: 'band-name active'
+    .control.edit-name EDIT
 
 br
 
@@ -11,7 +13,7 @@ br
       .title LYRICS
       /.control EDIT
       .lyrics contentEditable='false' data-update-url=(song_path(@song)) class=('placeholder' unless @song.lyrics)
-        = simple_format(@song.lyrics)
+        = @song.lyrics.try(:html_safe)
       .control EDIT
       /button id='edit-lyrics' Edit
 

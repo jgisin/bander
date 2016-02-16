@@ -3,12 +3,15 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 dimBg = ->
+  $('#bg').addClass 'active'
   $('#bg').velocity
     opacity: 0.3
 
 hideBg = ->
   $('#bg').velocity
     opacity: 0
+  , ->
+    $('#bg').removeClass 'active'
 
 toggleEditable = ->
   lyricsContainer = $('.lyrics-container')
@@ -25,6 +28,10 @@ toggleEditable = ->
   else
     $('.control').text "SAVE"
     dimBg()
+
+
+saveSongName = (name) ->
+  $.post($('.song-name').data('update-url'), { song: { name: name }, _method: 'PATCH' })
 
 saveLyrics = (lyrics) ->
   $.post($('.lyrics').data('update-url'), { song: { lyrics: lyrics }, _method: 'PATCH' })
@@ -45,14 +52,37 @@ $ ->
     if $(@).text().length > 0
       $(@).removeClass 'placeholder'
 
-  $(".control").click ->
+  $(".link-section .control").click ->
+    link = $(@).closest('.link-section').find('a')
+    isEditable = link.is('.editable')
+    unless isEditable
+      $(@).closest('.link-section').addClass 'active'
+      link.prop('contentEditable', true)
+      link.addClass 'editable'
+      $(@).text "SAVE"
+      dimBg()
+    else
+      name = $('.song-name-link a').text()
+      saveSongName(name)
+      $(@).text "EDIT"
+      $(@).closest('.link-section').removeClass 'active'
+      link.prop('contentEditable', false)
+      link.removeClass 'editable'
+      hideBg()
+
+  $('.link-section a').keydown (event) ->
+    if event.keyCode == 13
+      event.preventDefault()
+
+
+  $(".lyrics-container .control").click ->
     lyrics = $('.lyrics')
     isEditable = lyrics.is('.editable')
     unless isEditable
       toggleEditable()
     else
       toggleEditable()
-      worded_lyrics = $('.lyrics').html().replace(/<p>/g, "\n")
+      worded_lyrics = $('.lyrics').html()
       saveLyrics(worded_lyrics)
       if $('.lyrics').text().length == 0
         $('.lyrics').html '<p></p>'

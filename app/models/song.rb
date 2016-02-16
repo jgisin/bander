@@ -5,10 +5,12 @@ class Song < ActiveRecord::Base
   has_many :audio_clips
   belongs_to :band
 
+  validates :name, :band, presence: true
+  validates :name, length: { maximum: 30 }
+
   def sanitize_lyrics
     if lyrics
-      self.lyrics = strip_tags(lyrics.strip.chomp)
-      unless self.lyrics =~ /\w/
+      unless strip_tags(lyrics.strip.chomp) =~ /\w/
         self.lyrics = nil
       end
     end

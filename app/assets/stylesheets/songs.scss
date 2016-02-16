@@ -2,6 +2,60 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+  color: #444;
+}
+
+.link-section {
+  display: inline-block;
+  padding-bottom: 20px;
+  margin-bottom: -20px;
+  position: relative;
+  &:hover {
+    .control {
+      opacity: 1;
+    }
+  }
+  a, a:hover, a:active {
+    text-decoration: none;
+    color: white;
+  }
+  transition: all 0.3s;
+  &.active {
+    .control {
+      background-color: #000;
+      box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+      opacity: 1;
+    }
+    z-index: 100;
+    .band-name {
+      box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+      background-color: red;
+      padding: 5px 15px;
+      background-color: $band-color;
+      outline: 0;
+    }
+  }
+  .control {
+    transition: all 0.3s;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    display: inline-block;
+    background-color: #AAA;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 2px 3px;
+    opacity: 0;
+    font-size: small;
+    &:hover {
+      opacity: 1;
+      background-color: $band-color;
+    }
+  }
+}
+
 #bg {
 
   // so if user scrolls it doesn't matter
@@ -14,8 +68,11 @@
   padding:0;
 
   // hidden initially
-  z-index: 30;
-  pointer-events: none;
+  z-index: -130;
+  &.active {
+    z-index: 30;
+  }
+  // pointer-events: none;
   opacity: 0;
 }
 
@@ -28,14 +85,13 @@
 .lyrics-container {
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   position: relative;
-  z-index: 100;
   background-color: white;
   outline: 0;
 
   .control {
     transition: all 0.3s;
     position: relative;
-    top: -4px;
+    top: 6px;
     display: inline-block;
     background-color: #AAA;
     color: white;
@@ -73,15 +129,21 @@
     // &:before {
     //   opacity: 0.5;
     // }
+    .control {
+      opacity: 1;
+    }
+    z-index: 100;
     transform: translateY(10px);
     box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
     padding: 10px;
+    padding-bottom: 15px;
     margin: -10px;
   }
 }
 
 
 .lyrics {
+  color: #444;
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   transform: translateZ(100);
   margin-top: 2px;
@@ -91,10 +153,14 @@
   }
   font-size: large;
   line-height: 25px;
-  font-weight: bold;
+  font-weight: normal;
+  div {
+    margin-top: 10px;
+  }
+  div:first-child {
+  }
   font-size: 20px;
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-  z-index: 100;
 }
 
 .phrase {
