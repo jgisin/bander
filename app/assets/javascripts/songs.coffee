@@ -38,7 +38,7 @@ $ ->
   $(".lyrics").keydown (event) ->
     if ((event.metaKey || event.ctrlKey) && event.keyCode == 13)
       toggleEditable()
-      lyrics = $(@).html().replace('<p>', "\n").replace("<br>","").replace("</p>","").replace("<div>","").replace("</div","")
+      lyrics = $(@).html().replace(/<p>/g, "\n")
       saveLyrics(lyrics)
       if $('.lyrics').text().length == 0
         $(@).addClass 'placeholder'
@@ -52,10 +52,10 @@ $ ->
       toggleEditable()
     else
       toggleEditable()
-      lyrics = $('.lyrics').html().replace('<p>', "\n").replace("<br>","").replace("</p>","").replace("<div>","").replace("</div","")
-      saveLyrics(lyrics)
+      worded_lyrics = $('.lyrics').html().replace(/<p>/g, "\n")
+      saveLyrics(worded_lyrics)
       if $('.lyrics').text().length == 0
-        $('.lyrics').html "<p></p>"
+        $('.lyrics').html '<p></p>'
         $('.lyrics').addClass 'placeholder'
 
   # $(".lyrics-container").dblclick ->
