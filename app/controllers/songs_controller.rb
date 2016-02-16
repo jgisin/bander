@@ -9,7 +9,6 @@ class SongsController < ApplicationController
   def create
     @band = Band.find(params[:band_id])
     @song = @band.songs.build(song_params)
-    @song.lyrics = @song.lyrics.strip.chomp
     if @song.save
       respond_to do |format|
         format.html { redirect_to @band }
