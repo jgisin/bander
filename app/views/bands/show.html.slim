@@ -1,5 +1,5 @@
 h1
-  = link_to @band.name, @band, class: 'band-name active'
+  = link_to @band.name, "#", class: 'band-name active'
 
 /br
 
@@ -16,7 +16,7 @@ br
 .row
   .col-sm-6
     .songs-container.songs-color
-      .title Songs
+      span.title SONGS
       .song-links data-update-url=(sort_band_songs_url(@band))
         - @band.songs.each do |song|
           .song.song-link id=("song_#{song.id}")
@@ -37,7 +37,7 @@ br
 
   .col-sm-6
     .songs-container
-      span.title Members
+      span.title MEMBERS
       - @band.users.each do |user|
         .song.song-link
           span.underline

@@ -5,20 +5,30 @@ $band-color: #0AF;
 
 .title {
   margin-bottom: 5px;
-  text-decoration: underline;
+  // text-decoration: underline;
   // font-weight: bold;
-  color: gray;
+  border-bottom: 3px solid #AAA;
+  letter-spacing: 3px;
+  margin-bottom: 5px;
+  display: inline-block;
+  font-weight: bold;
+  color: #AAA;
 }
 
 
 .band-name {
-  transition: all 0.3s;
+  // transition: all 0.3s;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   &:hover {
+    padding: 5px 15px;
     text-decoration: none;
     color: white;
     background-color: $band-color;
   }
   &.active {
+    &:hover {
+      // padding: 5px;
+    }
     background-color: $band-color;
   }
   background-color: black;
@@ -64,7 +74,7 @@ $band-color: #0AF;
   .song {
     transition: color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
     position: relative;
-    margin-top: 5px;
+    margin-bottom: 5px;
     border: 0px $band-color solid;
     .glyphicon {
       color: #888;

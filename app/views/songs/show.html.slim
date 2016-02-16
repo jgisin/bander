@@ -8,13 +8,13 @@ br
 .row
   .col-sm-6
     .lyrics-container
-      .title Lyrics
+      .title LYRICS
       .lyrics
         = simple_format(@song.lyrics)
 
   .col-sm-6
     .clips-container
-      .title Clips
+      .title CLIPS
       - @song.audio_clips.each do |clip|
         .clip
           | Uploaded 
