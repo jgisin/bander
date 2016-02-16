@@ -27,7 +27,7 @@ toggleEditable = ->
     dimBg()
 
 saveLyrics = (lyrics) ->
-  $.post($(@).data('url'), { song: { lyrics: lyrics }, _method: 'PATCH' })
+  $.post($('.lyrics').data('update-url'), { song: { lyrics: lyrics }, _method: 'PATCH' })
 
 $ ->
   audiojs.events.ready ->

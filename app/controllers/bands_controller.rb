@@ -1,5 +1,5 @@
 class BandsController < ApplicationController
-  before_action :set_band, only: [:show]
+  before_action :set_band, only: [:show, :update]
   before_action :require_login
 
   def new
@@ -18,6 +18,14 @@ class BandsController < ApplicationController
 
   def show
     @song = Song.new
+  end
+
+  def update
+    if @band.update(band_params)
+      redirect_to @band
+    else
+      redirect_to :back
+    end
   end
 
   private

@@ -21,10 +21,10 @@ br
         - @band.songs.each do |song|
           .song.song-link id=("song_#{song.id}")
             span.underline
-              = link_to song.name, [@band, song], class: 'song-a'
+              = link_to song.name, song, class: 'song-a'
             |  
             small
-              = link_to [@band, song], method: :delete, data: { confirm: 'Are you sure you want to delete this song?'} do
+              = link_to song, method: :delete, data: { confirm: 'Are you sure you want to delete this song?'} do
                 span.glyphicon.glyphicon-remove
       .song.add-song
         = link_to '#', class: 'add-song inactive', data: { target: 'song-form-1'} do

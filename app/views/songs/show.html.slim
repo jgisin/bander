@@ -10,7 +10,7 @@ br
     .lyrics-container
       .title LYRICS
       /.control EDIT
-      .lyrics contentEditable='false' data-url=(band_song_url(@band, @song)) class=('placeholder' unless @song.lyrics)
+      .lyrics contentEditable='false' data-update-url=(song_path(@song)) class=('placeholder' unless @song.lyrics)
         = simple_format(@song.lyrics)
       .control EDIT
       /button id='edit-lyrics' Edit

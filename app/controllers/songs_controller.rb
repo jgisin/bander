@@ -34,7 +34,7 @@ class SongsController < ApplicationController
   def update
     if @song.update(song_params)
       respond_to do |format|
-        format.html { redirect_to [@band, @song] }
+        format.html { redirect_to @song }
         format.json { render json: { success: true } }
       end
     else
@@ -59,8 +59,8 @@ class SongsController < ApplicationController
   private
 
   def set_song
-    @band = Band.find(params[:band_id])
     @song = Song.find(params[:id])
+    @band = @song.band
   end
 
   def song_params

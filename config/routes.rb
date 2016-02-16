@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root "homes#index"
 
+  resources :songs
+
   resources :bands do
     resources :band_invites do
       collection do
@@ -11,9 +13,6 @@ Rails.application.routes.draw do
       end
     end
     resources :songs do
-      member do
-        get 'lyrics'
-      end
       collection do
         post 'sort'
       end
