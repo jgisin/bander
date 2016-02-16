@@ -2,19 +2,99 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#bg {
+
+  // so if user scrolls it doesn't matter
+  position: fixed; 
+  background-color: black;
+  // expand to height & width
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding:0;
+
+  // hidden initially
+  z-index: 30;
+  pointer-events: none;
+  opacity: 0;
+}
+
+
+.placeholder:before {
+  content: "Edit Lyrics..."; /* this is where you assign the place holder */
+  color: #a9a9a9;
+}
+
+.lyrics-container {
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  position: relative;
+  z-index: 100;
+  background-color: white;
+  outline: 0;
+
+  .control {
+    transition: all 0.3s;
+    position: relative;
+    top: -4px;
+    display: inline-block;
+    background-color: #AAA;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 3px;
+    opacity: 0;
+    font-size: small;
+    &:hover {
+      opacity: 1;
+      background-color: $band-color;
+    }
+  }
+
+  &:hover{
+    .control {
+      opacity: 1;
+    }
+  }
+
+  // &:before {
+  //   position: absolute;
+  //   top: 5px;
+  //   right: 5px;
+  //   opacity: 0;
+  //   background-color: black;
+  //   color: white;
+  //   padding: 0 3px;
+  //   transition: all 0.2s;
+  //   font-size: small;
+  //   content: "CMD-Enter"
+  // }
+  //
+  &.active {
+    // &:before {
+    //   opacity: 0.5;
+    // }
+    transform: translateY(10px);
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+    padding: 10px;
+    margin: -10px;
+  }
+}
+
 
 .lyrics {
-  font-size: large;
-  line-height: 20px;
-  textarea {
-    width: 100%;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transform: translateZ(100);
+  margin-top: 2px;
+  position: relative;
+  &:focus {
     outline: none;
-    line-height: 15px;
-    height: 200px;
-    font-weight: normal;
-    border: 0px;
-    resize: none;
   }
+  font-size: large;
+  line-height: 25px;
+  font-weight: bold;
+  font-size: 20px;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  z-index: 100;
 }
 
 .phrase {

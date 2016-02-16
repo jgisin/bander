@@ -3,6 +3,16 @@ $band-color: #0AF;
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.control {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 3px;
+  opacity: 0;
+}
+
 .title {
   margin-bottom: 5px;
   // text-decoration: underline;
@@ -13,6 +23,11 @@ $band-color: #0AF;
   display: inline-block;
   font-weight: bold;
   color: #AAA;
+  transition: color 0.3s;
+  &.active {
+    color: $band-color;
+    border-color: $band-color;
+  }
 }
 
 

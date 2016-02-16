@@ -9,8 +9,11 @@ br
   .col-sm-6
     .lyrics-container
       .title LYRICS
-      .lyrics
+      /.control EDIT
+      .lyrics contentEditable='false' data-url=(band_song_url(@band, @song)) class=('placeholder' unless @song.lyrics)
         = simple_format(@song.lyrics)
+      .control EDIT
+      /button id='edit-lyrics' Edit
 
   .col-sm-6
     .clips-container
@@ -23,7 +26,3 @@ br
           = audio_tag clip.audio_file.url, preload: "auto"
 
     = link_to "Add Audio", new_band_song_audio_clip_path(@band, @song), class: 'btn btn-primary'
-
-= link_to "Edit Song", edit_band_song_path(@band, @song)
-br
-

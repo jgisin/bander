@@ -9,6 +9,7 @@ class SongsController < ApplicationController
   def create
     @band = Band.find(params[:band_id])
     @song = @band.songs.build(song_params)
+    @song.lyrics = @song.lyrics.strip.chomp
     if @song.save
       respond_to do |format|
         format.html { redirect_to @band }
@@ -33,14 +34,16 @@ class SongsController < ApplicationController
 
   def update
     if @song.update(song_params)
-      redirect_to [@band, @song]
+      respond_to do |format|
+        format.html { redirect_to [@band, @song] }
+        format.json { render json: { success: true } }
+      end
     else
       render :edit
     end
   end
 
   def lyrics
-
   end
 
   def sort
