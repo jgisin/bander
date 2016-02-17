@@ -37,11 +37,6 @@ saveLyrics = (lyrics) ->
   $.post($('.lyrics').data('update-url'), { song: { lyrics: lyrics }, _method: 'PATCH' })
 
 $ ->
-  audiojs.events.ready ->
-    as = audiojs.createAll()
-    return
-
-
   $(".lyrics").keydown (event) ->
     if ((event.metaKey || event.ctrlKey) && event.keyCode == 13)
       toggleEditable()

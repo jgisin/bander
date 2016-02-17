@@ -21,10 +21,17 @@ br
     .clips-container
       .title CLIPS
       - @song.audio_clips.each do |clip|
-        .clip
+        .clip data-id=(clip.id)
           | Uploaded 
           = time_ago_in_words(clip.created_at)
           |  Ago
           = audio_tag clip.audio_file.url, preload: "auto"
+          = link_to "Add Note", "#", class: 'add-clip-note'
+          .notes
+            - clip.audio_notes.each do |note|
+              .audio-note
+                .set-clip-time data-time=(note.time)
+                  = note.format_time
+                .note = note.note
 
     = link_to "Add Audio", new_band_song_audio_clip_path(@band, @song), class: 'btn btn-primary'

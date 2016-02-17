@@ -17,6 +17,8 @@ AudioClip	/Users/kitlangton/rails_projects/bander/app/models/audio_clip.rb	/^cla
 AudioClipsController	/Users/kitlangton/rails_projects/bander/app/controllers/audio_clips_controller.rb	/^class AudioClipsController < ApplicationController$/;"	c
 AudioClipsHelper	/Users/kitlangton/rails_projects/bander/app/helpers/audio_clips_helper.rb	/^module AudioClipsHelper$/;"	m
 AudioFileUploader	/Users/kitlangton/rails_projects/bander/app/uploaders/audio_file_uploader.rb	/^class AudioFileUploader < CarrierWave::Uploader::Base$/;"	c
+AudioNotesController	/Users/kitlangton/rails_projects/bander/app/controllers/audio_notes_controller.rb	/^class AudioNotesController < ApplicationController$/;"	c
+AudioNotesHelper	/Users/kitlangton/rails_projects/bander/app/helpers/audio_notes_helper.rb	/^module AudioNotesHelper$/;"	m
 Band	/Users/kitlangton/rails_projects/bander/app/models/band.rb	/^class Band < ActiveRecord::Base$/;"	c
 BandInvite	/Users/kitlangton/rails_projects/bander/app/models/band_invite.rb	/^class BandInvite < ActiveRecord::Base$/;"	c
 BandInvitesController	/Users/kitlangton/rails_projects/bander/app/controllers/band_invites_controller.rb	/^class BandInvitesController < ApplicationController$/;"	c
@@ -26,6 +28,7 @@ BandsController	/Users/kitlangton/rails_projects/bander/app/controllers/bands_co
 BandsHelper	/Users/kitlangton/rails_projects/bander/app/helpers/bands_helper.rb	/^module BandsHelper$/;"	m
 BandsUser	/Users/kitlangton/rails_projects/bander/app/models/bands_user.rb	/^class BandsUser < ActiveRecord::Base$/;"	c
 CreateAudioClips	/Users/kitlangton/rails_projects/bander/db/migrate/20160214202017_create_audio_clips.rb	/^class CreateAudioClips < ActiveRecord::Migration$/;"	c
+CreateAudioNotes	/Users/kitlangton/rails_projects/bander/db/migrate/20160216235925_create_audio_notes.rb	/^class CreateAudioNotes < ActiveRecord::Migration$/;"	c
 CreateBandInvites	/Users/kitlangton/rails_projects/bander/db/migrate/20160215200138_create_band_invites.rb	/^class CreateBandInvites < ActiveRecord::Migration$/;"	c
 CreateBands	/Users/kitlangton/rails_projects/bander/db/migrate/20160212000327_create_bands.rb	/^class CreateBands < ActiveRecord::Migration$/;"	c
 CreateBandsUsers	/Users/kitlangton/rails_projects/bander/db/migrate/20160212000701_create_bands_users.rb	/^class CreateBandsUsers < ActiveRecord::Migration$/;"	c
@@ -55,6 +58,7 @@ a.skipTo	/Users/kitlangton/rails_projects/bander/vendor/assets/javascripts/audio
 a.updatePlayhead	/Users/kitlangton/rails_projects/bander/vendor/assets/javascripts/audio.min.js	/^a.settings.loadProgress.apply(a,[c])};a.skipTo=function(c){if(!(c>a.loadedPercent)){a.updatePlayhead.call(a,[c]);a.element.skipTo(c)}};a.updatePlayhead=function(c){a.settings.updatePlayhead.apply(a,[c])};a.play=function(){if(!a.settings.preload){a.settings.preload=true;a.element.init(a.mp3)}a.playing=true;a.element.pplay();a.settings.play.apply(a)};a.pause=function(){a.playing=false;a.element.ppause();a.settings.pause.apply(a)};a.setVolume=function(c){a.element.setVolume(c)};a.loadStarted=function(){a.swfReady=$/;"	f
 activate	/Users/kitlangton/rails_projects/bander/app/controllers/band_invites_controller.rb	/^  def activate$/;"	f	class:BandInvitesController
 audio_clip_params	/Users/kitlangton/rails_projects/bander/app/controllers/audio_clips_controller.rb	/^  def audio_clip_params$/;"	f	class:AudioClipsController
+audio_note_params	/Users/kitlangton/rails_projects/bander/app/controllers/audio_notes_controller.rb	/^  def audio_note_params$/;"	f	class:AudioNotesController
 band_invite_email	/Users/kitlangton/rails_projects/bander/app/mailers/user_mailer.rb	/^  def band_invite_email(email, invite)$/;"	f	class:UserMailer
 band_invite_params	/Users/kitlangton/rails_projects/bander/app/controllers/band_invites_controller.rb	/^  def band_invite_params$/;"	f	class:BandInvitesController
 band_params	/Users/kitlangton/rails_projects/bander/app/controllers/bands_controller.rb	/^  def band_params$/;"	f	class:BandsController
@@ -74,7 +78,9 @@ change	/Users/kitlangton/rails_projects/bander/db/migrate/20160214202101_add_aud
 change	/Users/kitlangton/rails_projects/bander/db/migrate/20160215190410_add_position_to_songs.rb	/^  def change$/;"	f	class:AddPositionToSongs
 change	/Users/kitlangton/rails_projects/bander/db/migrate/20160215200138_create_band_invites.rb	/^  def change$/;"	f	class:CreateBandInvites
 change	/Users/kitlangton/rails_projects/bander/db/migrate/20160215230110_add_names_to_users.rb	/^  def change$/;"	f	class:AddNamesToUsers
+change	/Users/kitlangton/rails_projects/bander/db/migrate/20160216235925_create_audio_notes.rb	/^  def change$/;"	f	class:CreateAudioNotes
 create	/Users/kitlangton/rails_projects/bander/app/controllers/audio_clips_controller.rb	/^  def create$/;"	f	class:AudioClipsController
+create	/Users/kitlangton/rails_projects/bander/app/controllers/audio_notes_controller.rb	/^  def create$/;"	f	class:AudioNotesController
 create	/Users/kitlangton/rails_projects/bander/app/controllers/band_invites_controller.rb	/^  def create$/;"	f	class:BandInvitesController
 create	/Users/kitlangton/rails_projects/bander/app/controllers/bands_controller.rb	/^  def create$/;"	f	class:BandsController
 create	/Users/kitlangton/rails_projects/bander/app/controllers/sessions_controller.rb	/^  def create$/;"	f	class:SessionsController
@@ -191,6 +197,9 @@ AudioClipsController	/Users/kitlangton/rails_projects/bander/app/controllers/aud
 new	/Users/kitlangton/rails_projects/bander/app/controllers/audio_clips_controller.rb	/^  def new$/;"	f	class:AudioClipsController
 create	/Users/kitlangton/rails_projects/bander/app/controllers/audio_clips_controller.rb	/^  def create$/;"	f	class:AudioClipsController
 audio_clip_params	/Users/kitlangton/rails_projects/bander/app/controllers/audio_clips_controller.rb	/^  def audio_clip_params$/;"	f	class:AudioClipsController
+AudioNotesController	/Users/kitlangton/rails_projects/bander/app/controllers/audio_notes_controller.rb	/^class AudioNotesController < ApplicationController$/;"	c
+create	/Users/kitlangton/rails_projects/bander/app/controllers/audio_notes_controller.rb	/^  def create$/;"	f	class:AudioNotesController
+audio_note_params	/Users/kitlangton/rails_projects/bander/app/controllers/audio_notes_controller.rb	/^  def audio_note_params$/;"	f	class:AudioNotesController
 BandInvitesController	/Users/kitlangton/rails_projects/bander/app/controllers/band_invites_controller.rb	/^class BandInvitesController < ApplicationController$/;"	c
 create	/Users/kitlangton/rails_projects/bander/app/controllers/band_invites_controller.rb	/^  def create$/;"	f	class:BandInvitesController
 activate	/Users/kitlangton/rails_projects/bander/app/controllers/band_invites_controller.rb	/^  def activate$/;"	f	class:BandInvitesController
@@ -231,6 +240,7 @@ ApplicationHelper	/Users/kitlangton/rails_projects/bander/app/helpers/applicatio
 bootstrap_class_for	/Users/kitlangton/rails_projects/bander/app/helpers/application_helper.rb	/^  def bootstrap_class_for flash_type$/;"	f	class:ApplicationHelper
 flash_messages	/Users/kitlangton/rails_projects/bander/app/helpers/application_helper.rb	/^  def flash_messages(opts = {})$/;"	f	class:ApplicationHelper
 AudioClipsHelper	/Users/kitlangton/rails_projects/bander/app/helpers/audio_clips_helper.rb	/^module AudioClipsHelper$/;"	m
+AudioNotesHelper	/Users/kitlangton/rails_projects/bander/app/helpers/audio_notes_helper.rb	/^module AudioNotesHelper$/;"	m
 BandInvitesHelper	/Users/kitlangton/rails_projects/bander/app/helpers/band_invites_helper.rb	/^module BandInvitesHelper$/;"	m
 BandsHelper	/Users/kitlangton/rails_projects/bander/app/helpers/bands_helper.rb	/^module BandsHelper$/;"	m
 DashboardHelper	/Users/kitlangton/rails_projects/bander/app/helpers/dashboard_helper.rb	/^module DashboardHelper$/;"	m
@@ -243,6 +253,8 @@ ApplicationMailer	/Users/kitlangton/rails_projects/bander/app/mailers/applicatio
 UserMailer	/Users/kitlangton/rails_projects/bander/app/mailers/user_mailer.rb	/^class UserMailer < ApplicationMailer$/;"	c
 band_invite_email	/Users/kitlangton/rails_projects/bander/app/mailers/user_mailer.rb	/^  def band_invite_email(email, invite)$/;"	f	class:UserMailer
 AudioClip	/Users/kitlangton/rails_projects/bander/app/models/audio_clip.rb	/^class AudioClip < ActiveRecord::Base$/;"	c
+AudioNote	/Users/kitlangton/rails_projects/bander/app/models/audio_note.rb	/^class AudioNote < ActiveRecord::Base$/;"	c
+format_time	/Users/kitlangton/rails_projects/bander/app/models/audio_note.rb	/^  def format_time$/;"	f	class:AudioNote
 Band	/Users/kitlangton/rails_projects/bander/app/models/band.rb	/^class Band < ActiveRecord::Base$/;"	c
 BandInvite	/Users/kitlangton/rails_projects/bander/app/models/band_invite.rb	/^class BandInvite < ActiveRecord::Base$/;"	c
 generate_token	/Users/kitlangton/rails_projects/bander/app/models/band_invite.rb	/^  def generate_token$/;"	f	class:BandInvite
@@ -280,3 +292,5 @@ CreateBandInvites	/Users/kitlangton/rails_projects/bander/db/migrate/20160215200
 change	/Users/kitlangton/rails_projects/bander/db/migrate/20160215200138_create_band_invites.rb	/^  def change$/;"	f	class:CreateBandInvites
 AddNamesToUsers	/Users/kitlangton/rails_projects/bander/db/migrate/20160215230110_add_names_to_users.rb	/^class AddNamesToUsers < ActiveRecord::Migration$/;"	c
 change	/Users/kitlangton/rails_projects/bander/db/migrate/20160215230110_add_names_to_users.rb	/^  def change$/;"	f	class:AddNamesToUsers
+CreateAudioNotes	/Users/kitlangton/rails_projects/bander/db/migrate/20160216235925_create_audio_notes.rb	/^class CreateAudioNotes < ActiveRecord::Migration$/;"	c
+change	/Users/kitlangton/rails_projects/bander/db/migrate/20160216235925_create_audio_notes.rb	/^  def change$/;"	f	class:CreateAudioNotes

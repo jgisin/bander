@@ -20,6 +20,7 @@ gem 'slim-rails'
 gem 'audiojs-rails'
 gem 'jquery-ui-rails'
 gem 'rails_12factor'
+gem 'carrierwave-aws'
 
 group :development, :test do
   gem 'byebug'

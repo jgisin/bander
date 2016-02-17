@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :audio_notes
+
   get 'homes/index'
   get '/settings' => 'settings#index'
 

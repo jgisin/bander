@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160215230110) do
+ActiveRecord::Schema.define(version: 20160216235925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20160215230110) do
   end
 
   add_index "audio_clips", ["song_id"], name: "index_audio_clips_on_song_id", using: :btree
+
+  create_table "audio_notes", force: :cascade do |t|
+    t.decimal  "time",          precision: 6, scale: 3
+    t.text     "note"
+    t.integer  "audio_clip_id"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "audio_notes", ["audio_clip_id"], name: "index_audio_notes_on_audio_clip_id", using: :btree
 
   create_table "band_invites", force: :cascade do |t|
     t.string   "token"
@@ -80,6 +90,7 @@ ActiveRecord::Schema.define(version: 20160215230110) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "audio_clips", "songs"
+  add_foreign_key "audio_notes", "audio_clips"
   add_foreign_key "band_invites", "bands"
   add_foreign_key "band_invites", "users"
   add_foreign_key "bands_users", "bands"
